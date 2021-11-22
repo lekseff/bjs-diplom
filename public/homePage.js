@@ -96,7 +96,6 @@ moneyManager.addMoneyCallback = (data) => {
 
 
 //* Конвертирование валюты
-//! Одинкаковое сравнение if
 
 moneyManager.conversionMoneyCallback = (data) => {
 

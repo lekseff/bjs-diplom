@@ -2,25 +2,27 @@
 
 const userForm = new UserForm();
 
-/**
- * Проверяет успешность запроса и выводит сообщения
- * @param {*} response - Ответ от сервера
- */
-function checkResponseForm(response) {
-
-  if (response.success) {
-    location.reload();
-  } else {
-    userForm.setLoginErrorMessage(response.error);
-  }
-}
-
-
 userForm.loginFormCallback = (data) => {
-  ApiConnector.login(data, (response) => checkResponseForm(response));
+  
+  ApiConnector.login(data, (response) => {
+
+    if (response.success) {
+      location.reload();
+    } else {
+      userForm.setLoginErrorMessage(response.error);
+    }
+  });
 }
 
 
 userForm.registerFormCallback = (data) => {
-  ApiConnector.register(data, (response) => checkResponseForm(response));
+
+  ApiConnector.register(data, (response) => {
+
+    if (response.success) {
+      location.reload();
+    } else {
+      userForm.setRegisterErrorMessage(response.error);
+    }
+  });
 }
